@@ -1,11 +1,38 @@
-import { useState } from "react";
+import { PropsWithChildren, useState } from "react";
 import './App.css';
 import TodoInput from "./TodoInput";
 import { Todo } from "./types";
 import TodoList from "./TodoList";
 
-
 function App() {
+  return <Layout><TodoContainer/></Layout>;
+  
+}
+
+function Layout({children}: PropsWithChildren) {
+
+  const [direction, setDirection] = useState<'row' | 'column'>('column');
+
+  return (
+    <div style={{display: 'flex', flexDirection: direction}}>
+      <div style={{padding: '20px'}}>
+        <h1>Todo app</h1>
+          <button 
+            onClick={() => 
+              setDirection(prev => (prev === 'row' ? 'column' : 'row'))
+            }
+          >
+            레이아웃 변경
+          </button>
+        <TodoContainer/>
+      </div>
+      {children}
+    </div>
+  )
+}
+
+
+function TodoContainer() {
  
   const [todos, setTodos] = useState<Todo[]>([]);
 
