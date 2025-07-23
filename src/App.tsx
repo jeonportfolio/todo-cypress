@@ -1,4 +1,4 @@
-import { PropsWithChildren, useState } from "react";
+import { PropsWithChildren, useCallback, useState } from "react";
 import './App.css';
 import TodoInput from "./TodoInput";
 import { Todo } from "./types";
@@ -36,16 +36,16 @@ function TodoContainer() {
  
   const [todos, setTodos] = useState<Todo[]>([]);
 
-  const addTodo = (newTodo: string) => {
+  const addTodo = useCallback((newTodo: string) => {
       setTodos( prevTodos => [
         ...prevTodos,
         {
-          id: todos.length + 1,
+          id: prevTodos.length + 1,
           text: newTodo,
           done: false
         }
       ])
-  };
+  }, []);
 
   const toggleTodo = (id: number) => {
     setTodos(prevTodos => prevTodos.map(todo => {
