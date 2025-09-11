@@ -1,5 +1,5 @@
 import Checkbox from "./checkbox";
-import { Todo } from "./types"
+import { Todo } from "../types"
 
 interface TodoListProps {
     todos: Todo[];
