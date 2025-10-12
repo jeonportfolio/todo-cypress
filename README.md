@@ -7,3 +7,5 @@
 - Action -> Reducer(상태정의) -> Store(초기상태 정의)의 flux 형태의 Redux <br/>
 - `npm i redux@5.0.1 @reduxjs/toolkit@2.2.3 react-redux@9.1.2`<br/>
 - useDispatch와 useSelector을 사용해서 상태를 읽고 액션을 실행 <br/>
+- 입력이 진행중일때 성공했을때 실패했을때 각각의 상황을 나누어 상태관리<br/>
+- `npm i redux-saga@1.3.0` Redux-saga를 사용해 비동기 처리 => 미들웨어로 추가<br/>

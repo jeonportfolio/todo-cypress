@@ -3,10 +3,14 @@ import { Todo } from "../types";
 
 interface TodoState {
     todos: Todo[];
+    status: 'idle' | 'loading' | 'failed' | 'suceeded';
+    error: string | null;
 }
 
 const initialState: TodoState = {
     todos: [],
+    status: 'idle',
+    error: null,
 }
 
 const todoSlice = createSlice({
@@ -26,10 +30,22 @@ const todoSlice = createSlice({
             if(todo) {
                 todo.done = !todo.done;
             }
+        },
+        fetchTodoRequest: (state) => {
+            state.status = 'loading';            
+        },
+        fetchTodoSuccess:(state, action: PayloadAction<{ todos: Todo[] }>) => {
+            state.status = 'suceeded';
+            state.todos = action.payload.todos;
+        },
+        fetchTodoFailure: (state, action: PayloadAction<{ error: string }>) => {
+            state.status = 'failed';
+            state.error = action.payload.error;
         }
+
     }
 });
 
-export const { addTodo, toggleTodo } = todoSlice.actions;
+export const { addTodo, toggleTodo, fetchTodoRequest, fetchTodoSuccess, fetchTodoFailure } = todoSlice.actions;
 const todoReducer = todoSlice.reducer;
 export default todoReducer;
