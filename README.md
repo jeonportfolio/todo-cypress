@@ -15,3 +15,11 @@
 - Redux와 다르게 보일러 플레이트 없이 간단한 상태관리 가능 <br/>
 - `npm i zustand@4.5.4`로 zustand 설치 <br/>
 - `addTodos, toggleTodos, fetchTodos`의 타입을 설정하고 비동기 로직으로 상태를 관리한다. <br/>
+
+## Cypress 테스트 <br/> 
+
+- `npm i -D cypress@13.7.3`로 설치 -> `npx cypress open`<br/>
+- chrome에서 E2E 테스트를 진행한다.(GUI를 통해 디버깅 가능)<br/>
+- pakage.json에서 scripts 부분에 "cy:open": "cypress open"를 입력해 실행 방식 변경<br/>
+- 사용자 관점에서 셀렉터를 선택할 수 있고 유지보수가 용이한 testing-Library 설치 `npm i -D @testing-library/cypress@10.0.2`<br/>
+- cypress 폴더안에 타입스크립트를 사용하기 위해 `tsconfig.json`파일 세팅 <br/>
